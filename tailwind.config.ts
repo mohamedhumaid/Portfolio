@@ -1,8 +1,8 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-    darkMode: ["class"],
-    content: [
+  darkMode: ["class"],
+  content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -14,7 +14,28 @@ const config: Config = {
         heading: ["var(--font-space-grotesk)", "system-ui", "sans-serif"],
       },
       colors: {
-        // Override violet → cobalt blue palette
+        // shadcn-compatible semantic tokens (referenced by CinematicFooter + other UI)
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        primary: {
+          DEFAULT: "var(--primary)",
+          foreground: "var(--primary-foreground)",
+        },
+        secondary: {
+          DEFAULT: "var(--secondary)",
+          foreground: "var(--secondary-foreground)",
+        },
+        muted: {
+          DEFAULT: "var(--muted)",
+          foreground: "var(--muted-foreground)",
+        },
+        destructive: {
+          DEFAULT: "var(--destructive)",
+          foreground: "#ffffff",
+        },
+        border: "var(--border)",
+        ring: "var(--ring)",
+        // Cobalt blue replaces violet everywhere
         violet: {
           300: "#7ab0e8",
           400: "#4d8fe0",

@@ -34,7 +34,7 @@ export default function GlassCard({
       style={style}
     >
       {glow && (
-        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-500/[0.04] to-cyan-500/[0.04] pointer-events-none" />
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#0047AB]/[0.04] to-cyan-500/[0.04] pointer-events-none" />
       )}
       {children}
     </motion.div>

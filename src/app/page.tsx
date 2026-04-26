@@ -3,25 +3,25 @@ import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Experience from "@/components/sections/Experience";
 import Skills from "@/components/sections/Skills";
+import Capabilities from "@/components/sections/Capabilities";
 import Projects from "@/components/sections/Projects";
 import Contact from "@/components/sections/Contact";
+import { CinematicFooter } from "@/components/motion-footer";
 
 export default function Home() {
   return (
-    <main>
-      <NavBar />
-      <Hero />
-      <About />
-      <Experience />
-      <Skills />
-      <Projects />
-      <Contact />
-      <footer className="text-center py-10 text-slate-600 text-sm border-t border-white/[0.04]">
-        <p>
-          © {new Date().getFullYear()} Mohammed Humaid.{" "}
-          <span className="text-gradient">Built with passion.</span>
-        </p>
-      </footer>
-    </main>
+    <div className="relative">
+      <main className="relative z-10 bg-[#0a0a0f] rounded-b-3xl shadow-2xl">
+        <NavBar />
+        <Hero />
+        <About />
+        <Experience />
+        <Skills />
+        <Capabilities />
+        <Projects />
+        <Contact />
+      </main>
+      <CinematicFooter />
+    </div>
   );
 }

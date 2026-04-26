@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  /* Core palette */
   --background: #0a0a0f;
   --foreground: #e2e8f0;
   --accent: #0047AB;
@@ -10,6 +11,16 @@
   --surface: rgba(255, 255, 255, 0.04);
   --border: rgba(255, 255, 255, 0.08);
   --radius: 0.625rem;
+
+  /* shadcn-compatible tokens — used by CinematicFooter & UI components */
+  --primary: #0047AB;
+  --primary-foreground: #ffffff;
+  --secondary: #06b6d4;
+  --secondary-foreground: #ffffff;
+  --muted: rgba(255, 255, 255, 0.06);
+  --muted-foreground: #64748b;
+  --destructive: #ef4444;
+  --ring: #0047AB;
 }
 
 * {
@@ -26,20 +37,11 @@ body {
   overflow-x: hidden;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #0a0a0f;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(0, 71, 171, 0.4);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 71, 171, 0.7);
-}
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #0a0a0f; }
+::-webkit-scrollbar-thumb { background: rgba(0,71,171,0.45); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0,71,171,0.75); }
 
 /* Selection */
 ::selection {
@@ -70,3 +72,7 @@ body {
     background-clip: text;
   }
 }
+
+
+
+@layer base {}

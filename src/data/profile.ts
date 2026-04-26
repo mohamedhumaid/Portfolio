@@ -74,7 +74,7 @@ export const profile = {
       tech: ["Next.js", "Node.js", "PostgreSQL", "Redis"],
       live: "",
       github: "",
-      gradient: "from-violet-500/20 to-cyan-500/20",
+      gradient: "from-[#0047AB]/20 to-cyan-500/20",
     },
     {
       title: "Project Beta",
@@ -92,7 +92,7 @@ export const profile = {
       tech: ["Next.js", "Stripe", "Prisma", "PostgreSQL"],
       live: "",
       github: "",
-      gradient: "from-violet-500/20 to-pink-500/20",
+      gradient: "from-[#0047AB]/20 to-[#06b6d4]/20",
     },
   ],
   education: [
@@ -109,7 +109,7 @@ export const profile = {
   ],
   social: {
     linkedin: "https://www.linkedin.com/in/mohammed-humaid-217477130",
-    github: "https://github.com/mohamedhumaid",
+    whatsapp: "https://wa.me/201018793733",
     email: "mshumaid5@gmail.com",
   },
 };

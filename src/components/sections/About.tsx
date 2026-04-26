@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import GlassCard from "@/components/ui/GlassCard";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -44,7 +45,7 @@ export default function About() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="about" className="relative py-28 overflow-hidden">
+    <section ref={sectionRef} id="about" className="relative py-24 overflow-hidden">
       <motion.div
         className="absolute inset-0 pointer-events-none"
         style={{ y: bgY }}
@@ -53,8 +54,8 @@ export default function About() {
       </motion.div>
       <div className="relative z-10 max-w-5xl mx-auto px-6">
       <ScrollReveal>
-        <div className="text-center mb-16">
-          <span className="text-violet-400 font-mono text-xs tracking-[0.2em] uppercase">
+        <div className="text-center mb-14">
+          <span className="text-[#4d8fe0] font-mono text-xs tracking-[0.2em] uppercase">
             About Me
           </span>
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mt-2">
@@ -63,32 +64,58 @@ export default function About() {
         </div>
       </ScrollReveal>
 
-      <div className="grid lg:grid-cols-2 gap-14 items-center">
+      <div className="grid lg:grid-cols-2 gap-14 items-start">
         {/* Avatar */}
         <ScrollReveal direction="left">
           <div className="flex justify-center lg:justify-start">
             <motion.div className="relative" style={{ y: avatarY }}>
-              {/* Outer glow ring */}
+
+              {/* Animated gradient border ring */}
               <motion.div
-                className="absolute -inset-4 rounded-[2.5rem] border border-violet-500/20 pointer-events-none"
-                animate={{ opacity: [0.4, 0.8, 0.4] }}
-                transition={{ repeat: Infinity, duration: 4 }}
+                className="absolute -inset-[3px] rounded-3xl pointer-events-none z-[-1]"
+                style={{
+                  background:
+                    "linear-gradient(135deg, #0047AB 0%, #06b6d4 50%, #0047AB 100%)",
+                  backgroundSize: "200% 200%",
+                }}
+                animate={{ backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"] }}
+                transition={{ repeat: Infinity, duration: 5, ease: "linear" }}
               />
-              <div className="w-64 h-64 rounded-3xl bg-gradient-to-br from-violet-600/25 to-cyan-600/15 border border-violet-500/20 flex items-center justify-center backdrop-blur-xl">
-                <div className="w-52 h-52 rounded-2xl bg-gradient-to-br from-violet-600/20 to-cyan-600/10 flex items-center justify-center">
-                  <span className="font-heading text-6xl font-bold text-gradient select-none">
-                    MH
-                  </span>
-                </div>
+
+              {/* Photo */}
+              <div className="relative w-[340px] h-[430px] rounded-3xl overflow-hidden border border-[#0047AB]/30">
+                <Image
+                  src="/mohammed-humaid.jpg"
+                  alt="Mohammed Humaid"
+                  width={340}
+                  height={430}
+                  priority
+                  className="w-full h-full object-cover object-top"
+                />
+                {/* Bottom gradient — lets badge float cleanly over the photo */}
+                <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#0a0a0f]/75 to-transparent pointer-events-none" />
+                {/* Subtle cobalt tint to tie the bright photo into the dark theme */}
+                <div className="absolute inset-0 bg-[#0047AB]/8 mix-blend-multiply pointer-events-none" />
               </div>
 
-              {/* Floating badge */}
+              {/* Floating "Open to Work" badge */}
               <motion.div
-                className="absolute -bottom-5 -right-5 px-4 py-2 rounded-xl bg-violet-600 text-white text-sm font-medium shadow-lg shadow-violet-500/30"
-                animate={{ y: [0, -6, 0] }}
+                className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap px-4 py-2 rounded-xl bg-[#0047AB] text-white text-sm font-medium shadow-lg shadow-[#0047AB]/40"
+                animate={{ y: [0, -5, 0] }}
                 transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
               >
                 Open to Work ✦
+              </motion.div>
+
+              {/* Experience pill — top-right corner */}
+              <motion.div
+                className="absolute -top-3 -right-4 px-3 py-1.5 rounded-xl bg-[#0047AB] text-white text-xs font-mono font-bold shadow-lg shadow-[#0047AB]/40"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 }}
+              >
+                8+ yrs
               </motion.div>
             </motion.div>
           </div>
@@ -98,10 +125,6 @@ export default function About() {
         <ScrollReveal direction="right">
           <div className="space-y-5">
             <p className="text-slate-400 text-lg leading-relaxed">{profile.bio}</p>
-            <p className="text-slate-500 leading-relaxed">
-              Working remotely across the MENA region. I thrive on solving complex problems and
-              turning ideas into elegant digital experiences. Always learning, always building.
-            </p>
 
             {/* Stats grid */}
             <div ref={statsRef} className="grid grid-cols-3 gap-3 pt-4">

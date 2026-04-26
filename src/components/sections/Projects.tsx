@@ -13,11 +13,11 @@ import { profile } from "@/data/profile";
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-28 bg-white/[0.01]">
+    <section id="projects" className="py-24 bg-white/[0.01]">
       <div className="max-w-5xl mx-auto px-6">
         <ScrollReveal>
-          <div className="text-center mb-16">
-            <span className="text-violet-400 font-mono text-xs tracking-[0.2em] uppercase">
+          <div className="text-center mb-14">
+            <span className="text-[#4d8fe0] font-mono text-xs tracking-[0.2em] uppercase">
               Portfolio
             </span>
             <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mt-2">
@@ -30,7 +30,7 @@ export default function Projects() {
           {profile.projects.map((project, i) => (
             <ScrollReveal key={project.title} delay={i * 0.1} direction="up">
               <motion.article
-                className="group rounded-2xl border border-white/[0.07] overflow-hidden bg-white/[0.02] hover:border-violet-500/30 transition-colors duration-300 flex flex-col h-full"
+                className="group rounded-2xl border border-white/[0.07] overflow-hidden bg-white/[0.02] hover:border-[#0047AB]/30 transition-colors duration-300 flex flex-col h-full"
                 whileHover={{ y: -7 }}
                 transition={{ type: "spring", stiffness: 280, damping: 22 }}
               >
@@ -109,7 +109,7 @@ export default function Projects() {
                     {project.tech.map((t) => (
                       <span
                         key={t}
-                        className="px-2 py-0.5 rounded-md bg-violet-500/10 border border-violet-500/20 text-violet-400 text-xs"
+                        className="px-2 py-0.5 rounded-md bg-[#0047AB]/10 border border-[#0047AB]/20 text-[#4d8fe0] text-xs"
                       >
                         {t}
                       </span>

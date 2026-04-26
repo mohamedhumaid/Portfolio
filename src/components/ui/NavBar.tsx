@@ -15,9 +15,19 @@ const navLinks = [
 export default function NavBar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 40);
+    const handler = () => {
+      const scrollY = window.scrollY;
+      const windowH = window.innerHeight;
+      const docH = document.documentElement.scrollHeight;
+
+      // Hide when user has scrolled into the footer area (last ~100vh)
+      const nearBottom = scrollY + windowH >= docH - windowH * 0.05;
+      setHidden(nearBottom);
+      setScrolled(scrollY > 40);
+    };
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);
@@ -26,8 +36,8 @@ export default function NavBar() {
     <motion.header
       className="fixed top-0 left-0 right-0 z-50 px-4 pt-4"
       initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
+      animate={{ y: hidden ? -120 : 0, opacity: hidden ? 0 : 1 }}
+      transition={{ duration: 0.45, ease: [0.25, 0.4, 0.25, 1] }}
     >
       <div
         className={`mx-auto max-w-5xl rounded-2xl px-5 py-3 transition-all duration-300 ${
@@ -40,7 +50,7 @@ export default function NavBar() {
             className="font-heading text-xl font-bold text-white"
             whileHover={{ scale: 1.04 }}
           >
-            MH<span className="text-violet-400">.</span>
+            MH<span className="text-[#4d8fe0]">.</span>
           </motion.a>
 
           {/* Desktop */}
@@ -53,12 +63,12 @@ export default function NavBar() {
                 whileHover={{ y: -1 }}
               >
                 {link.label}
-                <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-violet-400 transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-[#4d8fe0] transition-all duration-300 group-hover:w-full" />
               </motion.a>
             ))}
             <motion.a
               href="#contact"
-              className="px-4 py-2 rounded-xl bg-violet-600 text-white text-sm font-medium hover:bg-violet-500 transition-colors"
+              className="px-4 py-2 rounded-xl bg-[#0047AB] text-white text-sm font-medium hover:bg-[#003d96] transition-colors"
               whileHover={{ scale: 1.05, y: -1 }}
               whileTap={{ scale: 0.96 }}
             >
@@ -98,7 +108,7 @@ export default function NavBar() {
               ))}
               <a
                 href="#contact"
-                className="mt-1 px-4 py-2 rounded-xl bg-violet-600 text-white text-sm font-medium text-center"
+                className="mt-1 px-4 py-2 rounded-xl bg-[#0047AB] text-white text-sm font-medium text-center"
                 onClick={() => setMobileOpen(false)}
               >
                 Hire Me
