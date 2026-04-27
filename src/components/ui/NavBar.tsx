@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -47,10 +48,9 @@ export default function NavBar() {
         <div className="flex items-center justify-between">
           <motion.a
             href="#"
-            className="font-heading text-xl font-bold text-white"
             whileHover={{ scale: 1.04 }}
           >
-            MH<span className="text-[#4d8fe0]">.</span>
+            <Image src="/mh-logo.png" alt="MH Logo" width={48} height={40} className="object-contain" />
           </motion.a>
 
           {/* Desktop */}
