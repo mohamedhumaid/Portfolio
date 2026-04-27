@@ -67,13 +67,13 @@ export default function Contact() {
       <ScrollReveal>
         <div className="text-center mb-14">
           <span className="text-[#4d8fe0] font-mono text-xs tracking-[0.2em] uppercase">
-            Let's Talk
+            Let&apos;s Talk
           </span>
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mt-2">
             Get In Touch
           </h2>
           <p className="text-slate-500 mt-3 max-w-md mx-auto text-base">
-            Have a project in mind or just want to say hello? I'd love to hear from you.
+            Have a project in mind or just want to say hello? I&apos;d love to hear from you.
           </p>
         </div>
       </ScrollReveal>

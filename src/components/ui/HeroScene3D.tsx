@@ -22,7 +22,7 @@ function fibonacciSphere(count: number) {
   return points;
 }
 
-function Globe({ mouseX, mouseY }: Props) {
+function Globe({ mouseY }: Props) {
   const groupRef = useRef<THREE.Group>(null);
   const ring1Ref = useRef<THREE.Mesh>(null);
   const ring2Ref = useRef<THREE.Mesh>(null);

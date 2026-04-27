@@ -177,11 +177,11 @@ const MagneticButton = React.forwardRef<HTMLElement, MagneticButtonProps>(
           });
         };
 
-        element.addEventListener("mousemove", handleMouseMove as any);
+        element.addEventListener("mousemove", handleMouseMove);
         element.addEventListener("mouseleave", handleMouseLeave);
 
         return () => {
-          element.removeEventListener("mousemove", handleMouseMove as any);
+          element.removeEventListener("mousemove", handleMouseMove);
           element.removeEventListener("mouseleave", handleMouseLeave);
         };
       }, element);
@@ -191,10 +191,10 @@ const MagneticButton = React.forwardRef<HTMLElement, MagneticButtonProps>(
 
     return (
       <Component
-        ref={(node: HTMLElement) => {
-          (localRef as any).current = node;
+        ref={(node: HTMLElement | null) => {
+          (localRef as React.MutableRefObject<HTMLElement | null>).current = node;
           if (typeof forwardedRef === "function") forwardedRef(node);
-          else if (forwardedRef) (forwardedRef as any).current = node;
+          else if (forwardedRef) (forwardedRef as React.MutableRefObject<HTMLElement | null>).current = node;
         }}
         className={cn("cursor-pointer", className)}
         {...props}
@@ -319,10 +319,10 @@ export function CinematicFooter() {
               ref={headingRef}
               className="text-5xl md:text-8xl font-black footer-text-glow tracking-tighter mb-4 text-center"
             >
-              Let's Work Together
+              Let&apos;s Work Together
             </h2>
             <p className="text-muted-foreground text-base md:text-lg mb-12 text-center max-w-md">
-              Ready to build something remarkable? Reach out and let's turn your vision into reality.
+              Ready to build something remarkable? Reach out and let&apos;s turn your vision into reality.
             </p>
 
             {/* Interactive Magnetic Pills Layout */}
